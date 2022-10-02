@@ -1,4 +1,4 @@
-const pokemonCount = 25;
+const pokemonCount = 905;
 var pokedex = {}
 var direito = document.getElementsByClassName('rightSide')
 direito = direito[0]
@@ -19,34 +19,42 @@ async function getPokemon (num){
     let url = 'https://pokeapi.co/api/v2/pokemon/'+ num.toString()
     let res = await fetch(url)
     let pokemon = await res.json()
-    // console.log(pokemon)
     let pokemonName = pokemon['name']
     let pokemonTypes = pokemon['types']
     let pokemonImg = pokemon['sprites']['front_default']
+    
     res = await fetch(pokemon['species']['url'])
     let pokemonDsc = await res.json()
     pokemonDsc = pokemonDsc['flavor_text_entries'][Math.floor(Math.random()*11)]['flavor_text']
     let pokemonStats = pokemon['stats']
-    // console.log(pokemonStats)
     pokedex[num] = {"name":pokemonName,'img':pokemonImg,'types':pokemonTypes,'desc':pokemonDsc,'stats':pokemonStats}
 
 }
 
 function updatePokemon(){
     document.getElementById('pokemonImg').src = pokedex[this.id]['img']
+    let statsDiv = document.getElementById('pokemonStats')
     let typesDiv = document.getElementById('pokemon-type')
+
+    // remove os tipos do pokemon anterior
     while(typesDiv.firstChild){
     typesDiv.firstChild.remove()
+
     }
-    // let stats = pokedex[this.id]['stats']
-    // for(let i = 0;i < stats.length;i++){
-    //     let stat = document.createElement('div')
-    //     stat.innerText = stats[i]['stat']['name'] +':'
-    //     stat.innerText += stats[i]['base_stat']
-    //     console.log(stats[i])
-    //     stat.classList.add('statsBox')
-    //     typesDiv.appendChild(stat)
-    // }
+    // remove os status do pokemon anterior
+    while(statsDiv.firstChild){
+      statsDiv.firstChild.remove()
+      }
+    let stats = pokedex[this.id]['stats']
+    //gera os elementos de status
+    for(let i = 0;i < stats.length;i++){
+        let stat = document.createElement('div')
+        stat.innerText = stats[i]['stat']['name'].toUpperCase() +':'
+        stat.innerText += stats[i]['base_stat']
+        stat.classList.add('statsBox')
+        statsDiv.appendChild(stat)
+    }
+    //gera os elementos de tipo
     let types = pokedex[this.id]['types']
     for(let i = 0; i < types.length;i++){
         let type = document.createElement('span')
@@ -61,12 +69,9 @@ function updatePokemon(){
 }
 
 function myFunction() {
-    // Declare variables
     input = document.getElementById('myInput');
     filter = input.value.toUpperCase();
     li = document.getElementsByClassName('pokemonCard');
-    // console.log(li[0].innerText)
-    // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
       txtValue = li[i].innerText;
       if (txtValue.toUpperCase().indexOf(filter)  > -1) {
