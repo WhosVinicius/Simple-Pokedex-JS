@@ -2,6 +2,11 @@ const pokemonCount = 905;
 var pokedex = {}
 var direito = document.getElementsByClassName('rightSide')
 direito = direito[0]
+var esquerdo = document.getElementsByClassName('leftSide')
+esquerdo = esquerdo[0]
+var main = document.getElementsByClassName('mainGrid')
+main = main[0]
+
 window.onload = async function(){
     for (let i = 1; i < pokemonCount; i++) {
         await getPokemon(i)
@@ -9,6 +14,8 @@ window.onload = async function(){
         pokemon.id = i
         pokemon.innerText = pokedex[i]['name'].toUpperCase()
         pokemon.classList.add('pokemonCard')
+        let types = pokedex[i]['types']
+          pokemon.classList.add(types[0]['type']['name'].toLowerCase())
         pokemon.addEventListener('click',updatePokemon)
         direito.appendChild(pokemon)
         
@@ -32,14 +39,13 @@ async function getPokemon (num){
 }
 
 function updatePokemon(){
+    main.classList.remove('normal','ground','fire','water','ice','dark','steel','poison','psychic','ghost','electric','fairy','rock','grass','bug','fighting','dragon')
     document.getElementById('pokemonImg').src = pokedex[this.id]['img']
     let statsDiv = document.getElementById('pokemonStats')
     let typesDiv = document.getElementById('pokemon-type')
-
     // remove os tipos do pokemon anterior
     while(typesDiv.firstChild){
     typesDiv.firstChild.remove()
-
     }
     // remove os status do pokemon anterior
     while(statsDiv.firstChild){
@@ -56,13 +62,13 @@ function updatePokemon(){
     }
     //gera os elementos de tipo
     let types = pokedex[this.id]['types']
+    main.classList.add(types[0]['type']['name'].toLowerCase())
     for(let i = 0; i < types.length;i++){
         let type = document.createElement('span')
         type.innerText = types[i]['type']['name'].toUpperCase()
         type.classList.add('typeBox')
         typesDiv.appendChild(type)
     }
-
     document.getElementById('pokemonDescript').innerText = pokedex[this.id]['desc']
     document.getElementById('pokemon-name').innerText = pokedex[this.id]['name'].toUpperCase()
 
@@ -82,3 +88,6 @@ function myFunction() {
     
   }
 }
+
+
+

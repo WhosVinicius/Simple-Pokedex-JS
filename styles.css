@@ -20,15 +20,16 @@
 }
 
 .leftSide {
-    background-color: antiquewhite;
+    background-color:rgba(255, 255, 255, 0.18);
     text-align: center;
     /* display: flex; */
     height: 100%;
-    border-radius: 16px;
+    border-radius: 2px;
     width: 60%;
 }
 
 .rightSide {
+    background-color:rgba(255, 255, 255, 0.524);
     height: 100%;
     align-content: center;
     align-items: center;
@@ -59,20 +60,21 @@
 }
 
 .typeBox {
+    background-color:rgba(255, 255, 255, 0.4);
     display: inline-block;
     width: 120px;
     margin: 4px;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.65);
+    border-radius: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.65);
     padding: 5px;
     font-size: 18px;
 
 }
 
 #pokemonImg {
-    background-color:rgb(255, 255, 255);
+    background-color:rgba(255, 255, 255, 0.45);
     margin: 10px;
-    border-radius: 4px;
+    border-radius: 12px;
     border: 3px solid rgba(0, 0, 0,0.65);
     width: 55%;
     height: 35%;
@@ -84,6 +86,7 @@
 
 
 #pokemonDescript {
+    background-color:rgba(255, 255, 255, 0.4);
     padding: 10px;
     margin: auto;
     margin-top: -10px;
@@ -93,10 +96,25 @@
     border-radius: 12px;
     height: 170px;
     overflow-y: scroll;
-    border: 3px solid rgba(0, 0, 0, 0.65);
-    
+    border: 3px solid rgba(0, 0, 0, 0.70);
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;    
 }
 
+#pokemonDescript::-webkit-scrollbar-thumb {
+    border: 5px solid transparent;
+    border-radius: 100px;
+    background-clip: content-box;
+  }
+#pokemonDescript::-webkit-scrollbar {
+    width: 8px;
+  }
+#pokemonDescript::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: #c2c9d2;
+    
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
 #pokemon-name {
     display: block;
     font-size: 24px;
@@ -111,6 +129,8 @@
     padding: 5px;
     outline: none;
     font-size: 17px;
+    transition: ease-in-out .1s;
+
 }
 
 #myInput:focus{
@@ -130,6 +150,7 @@
 }
 
 .statsBox {
+    background-color:rgba(255, 255, 255, 0.4);
     display: inline-block;
     margin: auto;
     border: 3px solid rgba(0, 0, 0, 0.65);
@@ -142,6 +163,74 @@
     font-weight: 600;
 }
 
+.fire {
+    background-color: rgb(255, 219, 151);
+}
+
+.water {
+    background-color: rgb(174, 233, 255);
+}
+
+.grass {
+    background-color: rgb(196, 255, 108);
+}
+
+.bug {
+    background-color: rgb(79, 141, 79);
+
+}
+
+.normal {
+    background-color: white;
+}
+
+.electric {
+    background-color:rgb(255, 248, 143);
+}
+
+.ground {
+    background-color:rgb(158, 106, 75);
+}
+
+.fairy {
+    background-color: pink;
+}
+
+.poison {
+    background-color: rgb(193, 87, 87);
+}
+
+.psychic {
+    background-color:rgb(229, 172, 255);
+}
+
+.ghost {
+    background-color: rgb(174, 152, 216);
+}
+
+.ice {
+    background-color:cornflowerblue;
+}
+
+.steel {
+    background-color: rgb(184, 184, 184);
+}
+
+.dragon {
+    background-color:rgb(183, 33, 63);
+}
+
+.dark {
+    background-color: rgb(121, 33, 121);
+}
+
+.fighting {
+    background-color: orange;
+}
+
+.rock {
+    background-color: gray;
+}
 
 @media only screen and (max-width: 768px) {
     .mainGrid{
