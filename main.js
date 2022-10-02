@@ -1,4 +1,4 @@
-const pokemonCount = 905;
+const pokemonCount = 25;
 var pokedex = {}
 var direito = document.getElementsByClassName('rightSide')
 direito = direito[0]
@@ -60,3 +60,20 @@ function updatePokemon(){
 
 }
 
+function myFunction() {
+    // Declare variables
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    li = document.getElementsByClassName('pokemonCard');
+    // console.log(li[0].innerText)
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      txtValue = li[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter)  > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    
+  }
+}

@@ -5,9 +5,7 @@
 }
 
 
-body {
-    background-color: bl;
-}
+
 
 .mainGrid {
     flex-direction: row;
@@ -77,6 +75,7 @@ body {
     /* align-self: flex-start; */
     width: 45%;
     height: 35%;
+    display: inline;
     
     /* margin: auto; */
 }
@@ -103,6 +102,15 @@ body {
 
 }
 
+#myInput {
+    width: 80%;
+    margin: 10px 0px 15px 5px;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px;
+    outline: none;
+    font-size: 17px;
+}
 
 
 @media only screen and (max-width: 768px) {
@@ -143,4 +151,13 @@ body {
         width: 65%;
         height: 35%;
     }
+    #myInput {
+        padding: 7px;
+        font-size: 11px;
+        width: 70%;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 10px;
+    }
 }
+
