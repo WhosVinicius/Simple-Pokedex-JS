@@ -29,18 +29,20 @@ async function getPokemon (num){
     let pokemonName = pokemon['name']
     let pokemonTypes = pokemon['types']
     let pokemonImg = pokemon['sprites']['front_default']
+    let pokemonBack = pokemon['sprites']['back_default']
     
     res = await fetch(pokemon['species']['url'])
     let pokemonDsc = await res.json()
     pokemonDsc = pokemonDsc['flavor_text_entries'][Math.floor(Math.random()*11)]['flavor_text']
     let pokemonStats = pokemon['stats']
-    pokedex[num] = {"name":pokemonName,'img':pokemonImg,'types':pokemonTypes,'desc':pokemonDsc,'stats':pokemonStats}
+    pokedex[num] = {"name":pokemonName,'img':pokemonImg,'back':pokemonBack,'types':pokemonTypes,'desc':pokemonDsc,'stats':pokemonStats}
 
 }
 
 function updatePokemon(){
+  let img = document.getElementById('pokemonImg')
+  img.src = pokedex[this.id]['img']
     main.classList.remove('normal','ground','fire','water','ice','dark','steel','poison','psychic','ghost','electric','fairy','rock','grass','bug','fighting','dragon')
-    document.getElementById('pokemonImg').src = pokedex[this.id]['img']
     let statsDiv = document.getElementById('pokemonStats')
     let typesDiv = document.getElementById('pokemon-type')
     // remove os tipos do pokemon anterior
@@ -69,6 +71,12 @@ function updatePokemon(){
         type.classList.add('typeBox')
         typesDiv.appendChild(type)
     }
+    img.addEventListener('mouseenter',()=>{
+      img.src = pokedex[this.id]['back']
+    })
+    img.addEventListener('mouseleave',()=>{
+      img.src = pokedex[this.id]['img']
+    })
     document.getElementById('pokemonDescript').innerText = pokedex[this.id]['desc']
     document.getElementById('pokemon-name').innerText = pokedex[this.id]['name'].toUpperCase()
 
@@ -88,6 +96,7 @@ function myFunction() {
     
   }
 }
+
 
 
 

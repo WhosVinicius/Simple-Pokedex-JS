@@ -5,6 +5,7 @@
 }
 
 .mainGrid {
+    transition: ease-in .15s;
     flex-direction: row;
     margin: auto;
     margin-top: 60px;
@@ -25,7 +26,7 @@
 }
 
 .rightSide {
-    background-color:rgba(255, 255, 255, 0.524);
+    background-color:rgba(255, 255, 255, 0.55);
     height: 100%;
     align-content: center;
     align-items: center;
@@ -34,7 +35,8 @@
     overflow-y: auto;
     width: 40%;
     border-left: 3px solid rgba(0,0,0,0.65);
-    border-radius: 16px;
+    border-radius: 12px;
+    border-radius:0px 0px 12px 0px;
 }
 
 .pokemonCard {
@@ -43,12 +45,9 @@
     margin: 10px 0px 15px 5px;
     border: 1px solid black;
     border-radius: 6px;
-    padding: 15px;
+    padding: 12px;
     cursor: pointer;
-
-
 }
-
 
 #pokemon-type {
     margin-top: 10px;
@@ -57,7 +56,7 @@
 }
 
 .typeBox {
-    background-color:rgba(255, 255, 255, 0.4);
+    background-color:rgba(255, 255, 255, 0.55);
     display: inline-block;
     width: 120px;
     margin: 4px;
@@ -69,7 +68,7 @@
 }
 
 #pokemonImg {
-    background-color:rgba(255, 255, 255, 0.45);
+    background-color:rgba(255, 255, 255, 0.55);
     margin: 10px;
     border-radius: 12px;
     border: 3px solid rgba(0, 0, 0,0.65);
@@ -81,15 +80,17 @@
 
 .rightSide::-webkit-scrollbar-thumb {
     border: 5px solid transparent;
-    border-radius: 16px;
+    border-radius: 12px;
     background-clip: content-box;
   }
 .rightSide::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
+    background-color:rgba(0, 0, 0, 0.358);
+    border-radius: 12px;
   }
 .rightSide::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background: #c2c9d2;
+    /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8); */
+    background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.5);
   }
 #pokemon-name {
@@ -101,7 +102,7 @@
 
 
 #pokemonDescript {
-    background-color:rgba(255, 255, 255, 0.4);
+    background-color:rgba(255, 255, 255, 0.55);
     padding: 10px;
     margin: auto;
     margin-top: -10px;
@@ -113,7 +114,6 @@
     overflow-y: scroll;
     border: 3px solid rgba(0, 0, 0, 0.70);
     scrollbar-width: thin;
-    scrollbar-gutter: stable;    
 }
 
 #pokemonDescript::-webkit-scrollbar-thumb {
@@ -165,7 +165,7 @@
 }
 
 .statsBox {
-    background-color:rgba(255, 255, 255, 0.4);
+    background-color:rgba(255, 255, 255, 0.55);
     display: inline-block;
     margin: auto;
     border: 3px solid rgba(0, 0, 0, 0.65);
