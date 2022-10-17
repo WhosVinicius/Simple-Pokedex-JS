@@ -5,7 +5,7 @@ var esquerdo = document.getElementsByClassName("leftSide")[0];
 var main = document.getElementsByClassName("grid")[0];
 var relacionados = document.getElementById("relacionados");
 var atual = null;
-var testq = [
+var poke_types = [
   "normal",
   "ground",
   "fire",
@@ -33,18 +33,6 @@ window.onload = async function () {
     direito.appendChild(card);
   }
 };
-
-// function genCards(i){
-//   let pokemon = document.createElement('div')
-//   pokemon.id = i
-//   pokemon.innerText = pokedex[i]['name'].toUpperCase()
-//   pokemon.classList.add('pokemonCard')
-//   let types = pokedex[i]['types']
-//   pokemon.classList.add(types[0]['type']['name'].toLowerCase())
-//   pokemon.addEventListener('click',updatePokemon)
-//   pokemon.addEventListener('click',relaciona)
-//   return pokemon
-// }
 
 function genRel(i) {
   let pokemon = document.createElement("div");
@@ -165,7 +153,7 @@ function pesquisa() {
   let input = document.getElementById("myInput");
   let filter = input.value.toUpperCase();
   let card = document.getElementsByClassName("with-img");
-  if (testq.includes(filter.toLowerCase())) {
+  if (poke_types.includes(filter.toLowerCase())) {
     for (i = 0; i < card.length; i++) {
       let value = card[i].classList[1];
       if (value == filter.toLowerCase()) {
@@ -200,8 +188,8 @@ function relaciona() {
       continue;
     }
     if (pokedex[i]["types"][0]["type"]["name"] == cls) {
-      let x = genRel(i);
-      relacionados.appendChild(x);
+      let card_relacionado = genRel(i);
+      relacionados.appendChild(card_relacionado);
     }
   }
 }
