@@ -2,9 +2,10 @@ const pokemonCount = 905;
 var pokedex = {};
 var direito = document.getElementsByClassName("rightSide")[0];
 var esquerdo = document.getElementsByClassName("leftSide")[0];
-var main = document.getElementsByClassName("grid")[0];
+var main = document.getElementsByClassName("wraper")[0];
 var relacionados = document.getElementById("relacionados");
 var atual = null;
+var atual_id
 var poke_types = [
   "normal",
   "ground",
@@ -25,15 +26,30 @@ var poke_types = [
   "dragon",
 ];
 
-window.onload = async function () {
-  for (let i = 1; i < pokemonCount; i++) {
-    await getPokemon(i);
-    let card = genRel(i);
+const check = localStorage.getItem('pokedex')
+
+if(check){
+  pokedex = JSON.parse(check)
+  window.onload = function () {
+  for (let i = 1; i < check.length; i++) {
+    let card = genRel(i)
     card.classList.add("card");
     direito.appendChild(card);
+    }
   }
-};
-
+}
+else {
+  window.onload = async function () {
+    for (let i = 1; i < pokemonCount; i++) {
+      await getPokemon(i);
+      let card = genRel(i);
+      card.classList.add("card");
+      direito.appendChild(card);
+    }
+    localStorage.setItem('pokemon',JSON.stringify(pokedex))
+  };
+}
+  
 function genRel(i) {
   let pokemon = document.createElement("div");
   let img = document.createElement("img");
@@ -83,6 +99,7 @@ async function getPokemon(num) {
 
 function updatePokemon() {
   atual = pokedex[this.id]["name"];
+  atual_id = pokedex[this.id]
   let img = document.getElementById("pokemonImg");
   img.src = pokedex[this.id]["img"];
   main.classList.remove(
@@ -189,6 +206,7 @@ function relaciona() {
     }
     if (pokedex[i]["types"][0]["type"]["name"] == cls) {
       let card_relacionado = genRel(i);
+      card_relacionado.classList.add('relacionado')
       relacionados.appendChild(card_relacionado);
     }
   }
