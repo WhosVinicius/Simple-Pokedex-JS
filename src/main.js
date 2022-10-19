@@ -44,8 +44,11 @@ if (check) {
          let card = genRel(i);
          card.classList.add("card");
          direito.appendChild(card);
+         if(i == 899) {
+            localStorage.setItem("pokedex", JSON.stringify(pokedex));
+         }
       }
-      localStorage.setItem("pokedex", JSON.stringify(pokedex));
+      
    };
 }
 
