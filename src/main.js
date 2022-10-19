@@ -45,7 +45,7 @@ if (check) {
          card.classList.add("card");
          direito.appendChild(card);
       }
-      localStorage.setItem("pokemon", JSON.stringify(pokedex));
+      localStorage.setItem("pokedex", JSON.stringify(pokedex));
    };
 }
 
@@ -81,7 +81,7 @@ async function getPokemon(num) {
    //criação do dicionario pokedex
    res = await fetch(pokemon.species.url);
    let pokemonDsc = await res.json();
-   pokemonDsc = pokemonDsc.flavor_text_entries[Math.floor(Math.random() * 11)].flavor_text;
+   pokemonDsc = pokemonDsc.flavor_text_entries[1].flavor_text;
    let pokemonStats = pokemon["stats"];
    pokedex[num] = {
       name: pokemonName,
